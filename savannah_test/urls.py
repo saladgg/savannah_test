@@ -10,30 +10,28 @@ from access_control.custom_token import CustomTokenView
 
 from orders import views as order_views
 
-admin.site.site_header = 'Savannah Customers Admin Panel'
+admin.site.site_header = "Savannah Customers Admin Panel"
 
 router_admin = DefaultRouter()
 
 # router_admin.register(
 #     r'customers', users_view.CustomerViewSet, basename='customers')
 
-router_admin.register(
-    r'items', order_views.ItemViewSet, basename='items')
+router_admin.register(r"items", order_views.ItemViewSet, basename="items")
 
-router_admin.register(
-    r'orders', order_views.OrderViewSet, basename='orders')
-
+router_admin.register(r"orders", order_views.OrderViewSet, basename="orders")
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/admin/', include(router_admin.urls)),
+    path("admin/", admin.site.urls),
+    path("api/admin/", include(router_admin.urls)),
     # for default login/logout and for the apis requiring authorization
-    path('api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/token/',CustomTokenView.as_view(),name='token_obtain_pair'),
-     path('api/refresh-token/',jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path("api/api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("api/token/", CustomTokenView.as_view(), name="token_obtain_pair"),
+    path(
+        "api/refresh-token/", jwt_views.TokenRefreshView.as_view(), name="token_refresh"
+    ),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

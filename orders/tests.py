@@ -4,13 +4,14 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.test import APIRequestFactory, APITestCase
 from rest_framework import status
 from rest_framework.reverse import reverse
-from .serializers import ItemSerializer, OrderSerializer
-
-# from django.test import TestCase
 from unittest import TestCase
+
+from django.contrib.auth.models import Group
+from customers.models import UserAccessGroup
 from orders.models import Item, Order
 from customers.models import Customer
 from .views import ItemViewSet, OrderViewSet
+from .serializers import ItemSerializer, OrderSerializer
 from access_control.custom_token import CustomTokenView
 
 
@@ -25,6 +26,8 @@ def user_account(email, password):
 class TestOrderApp(APITestCase, TestCase):
     token: dict
     user: Customer
+    group: Group
+    user_access_group = UserAccessGroup
     item = Item
     email = "testb@user.com"
     password = "@QAZwsxedc."
@@ -33,9 +36,18 @@ class TestOrderApp(APITestCase, TestCase):
         data = {"email": email, "password": password}
         return self.client.post("/api/token/", data).json()
 
+    def createAccessGroup(self):
+        Group.objects.create(name="admin_access")
+        self.group = Group.objects.filter(name="admin_access").first()
+        self.user_access_group = UserAccessGroup.objects.create(
+            user_id=self.user.id, group_id=self.group.id
+        )
+
     def setUp(self):
         self.user = user_account(self.email, self.password)
+        self.createAccessGroup()
         self.token = self.getToken(self.email, self.password)
+
         factory = APIRequestFactory()
         request = factory.post(
             "api/admin/items/",

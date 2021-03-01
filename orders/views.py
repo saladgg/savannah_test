@@ -1,5 +1,6 @@
 import uuid
 from rest_framework import viewsets
+import requests
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
@@ -11,6 +12,25 @@ from access_control.user_permissions import (
     CashierAccessPermission,
     CustomerAccessPermission,
 )
+
+
+def sendSms(user, receipients: list):
+
+    url = "https://api.africastalking.com/version1/messaging"
+
+    payload = {
+        "username": "SALAD",
+        "message": "Hello {}, your order has been placed".format(user.first_name),
+        "to": receipients,
+    }
+
+    header = {
+        "Accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "apiKey": "aac155bc7bd9bb866ceff84f285667d75a01576439016699c25ab1bd850c2e41",
+    }
+
+    requests.post(url, data=payload, headers=header)
 
 
 class ItemViewSet(viewsets.ViewSet):
@@ -92,12 +112,17 @@ class ItemViewSet(viewsets.ViewSet):
 
 class OrderViewSet(viewsets.ViewSet):
     serializer_class = OrderSerializer
-    # def get_permissions(self):
-    #     if self.action in ['create', 'update','partial_update' ,'destroy']:
-    #         permission_classes = [AdminAccessPermission]
-    #     else:
-    #         permission_classes = [AdminAccessPermission|CashierAccessPermission|CustomerAccessPermission]
-    #     return [permission() for permission in permission_classes]
+
+    def get_permissions(self):
+        if self.action in ["create", "update", "partial_update", "destroy"]:
+            permission_classes = [AdminAccessPermission]
+        else:
+            permission_classes = [
+                AdminAccessPermission
+                | CashierAccessPermission
+                | CustomerAccessPermission
+            ]
+        return [permission() for permission in permission_classes]
 
     def list(self, request):
         filter = {}
@@ -116,6 +141,7 @@ class OrderViewSet(viewsets.ViewSet):
             serializer = OrderCreateSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
+                sendSms(self.request.user, [self.request.user.phone])
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:

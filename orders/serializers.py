@@ -31,10 +31,19 @@ class OrderCreateSerializer(serializers.ModelSerializer):
         )
 
 
-class OrderSerializer(serializers.ModelSerializer):
+class OrderReadSerializer(serializers.ModelSerializer):
     customer = CustomerSerializer()
     item = ItemSerializer()
 
+    class Meta:
+        model = Order
+        exclude = (
+            "added_on",
+            "updated_on",
+        )
+
+
+class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         exclude = (
