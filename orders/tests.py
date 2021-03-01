@@ -2,9 +2,9 @@ import uuid
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from rest_framework.test import APIRequestFactory, APITestCase
+from unittest import TestCase
 from rest_framework import status
 from rest_framework.reverse import reverse
-from unittest import TestCase
 
 from django.contrib.auth.models import Group
 from customers.models import UserAccessGroup
@@ -151,7 +151,6 @@ class TestOrderApp(APITestCase, TestCase):
         )
 
     # TEST FOR ORDER
-    print("TEST FOR ORDER")
 
     def order_creation(self):
         factory = APIRequestFactory()
@@ -165,8 +164,6 @@ class TestOrderApp(APITestCase, TestCase):
 
     def test_order_creation(self):
         factory = APIRequestFactory()
-        # print(response.data[0].get("id"))
-        # item_id = self.item.get("id")
         request = factory.post(
             "api/admin/orders/",
             {"customer": self.user.id, "item": self.item.get("id")},
