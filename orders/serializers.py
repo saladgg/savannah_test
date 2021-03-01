@@ -21,8 +21,6 @@ class ItemSerializer(serializers.ModelSerializer):
 
 
 class OrderCreateSerializer(serializers.ModelSerializer):
-    # customer = serializers.IntegerField()
-    # item = serializers.IntegerField()
     class Meta:
         model = Order
         exclude = (

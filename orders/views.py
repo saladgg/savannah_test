@@ -7,7 +7,12 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-from .serializers import ItemSerializer, OrderSerializer, OrderCreateSerializer
+from .serializers import (
+    ItemSerializer,
+    OrderSerializer,
+    OrderReadSerializer,
+    OrderCreateSerializer,
+)
 from .models import Order, Item
 from customers.models import Customer
 from access_control.user_permissions import (
@@ -137,7 +142,7 @@ class OrderViewSet(viewsets.ViewSet):
             filter["customer_id"] = request.query_params.get("cust_id")
         try:
             orders = Order.objects.filter(**filter)
-            serializer = OrderSerializer(orders, many=True)
+            serializer = OrderReadSerializer(orders, many=True)
             return Response(serializer.data)
         except Exception as e:
             raise e

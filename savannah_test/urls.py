@@ -14,9 +14,6 @@ admin.site.site_header = "Savannah Customers Admin Panel"
 
 router_admin = DefaultRouter()
 
-# router_admin.register(
-#     r'customers', users_view.CustomerViewSet, basename='customers')
-
 router_admin.register(r"items", order_views.ItemViewSet, basename="items")
 
 router_admin.register(r"orders", order_views.OrderViewSet, basename="orders")

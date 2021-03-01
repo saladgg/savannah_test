@@ -4,4 +4,4 @@ media/
 static/
 .vscode/
 __pycache__/
-savannah_test/settings.py
+# savannah_test/settings.py

@@ -1,4 +1,3 @@
-import uuid
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from rest_framework.test import APIRequestFactory, APITestCase
@@ -11,8 +10,6 @@ from customers.models import UserAccessGroup
 from orders.models import Item, Order
 from customers.models import Customer
 from .views import ItemViewSet, OrderViewSet
-from .serializers import ItemSerializer, OrderSerializer
-from access_control.custom_token import CustomTokenView
 
 
 def user_account(email, password):
