@@ -1,9 +1,12 @@
 import uuid
-from rest_framework import viewsets
 import requests
+from decouple import config
 from django.shortcuts import get_object_or_404
+from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
+
+
 from .serializers import ItemSerializer, OrderSerializer, OrderCreateSerializer
 from .models import Order, Item
 from customers.models import Customer
@@ -12,6 +15,9 @@ from access_control.user_permissions import (
     CashierAccessPermission,
     CustomerAccessPermission,
 )
+
+
+SMS_KEY = config("SMS_KEY")
 
 
 def sendSms(user, receipients: list):
@@ -27,7 +33,7 @@ def sendSms(user, receipients: list):
     header = {
         "Accept": "application/json",
         "Content-Type": "application/x-www-form-urlencoded",
-        "apiKey": "aac155bc7bd9bb866ceff84f285667d75a01576439016699c25ab1bd850c2e41",
+        "apiKey": SMS_KEY,
     }
 
     requests.post(url, data=payload, headers=header)
