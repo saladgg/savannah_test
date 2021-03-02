@@ -1,8 +1,9 @@
 import os
 from datetime import timedelta
+import django_heroku
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 SECRET_KEY = "b95t^2q+f5&vx8oga&v_+@(b$p5kh62-7dsrqhliuevuo3c688"
 DEBUG = False
 
@@ -156,3 +157,6 @@ MEDIA_URL = "/media/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+django_heroku.settings(locals())
