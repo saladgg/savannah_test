@@ -142,9 +142,12 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-if DEBUG:
-    STATIC_ROOT = "/home/salad/Desktop/.../savanna_informatics/savannah_test/static/"
-    MEDIA_ROOT = "/home/salad/Desktop/.../savanna_informatics/savannah_test/media/"
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, "staticfiles"),)
+
+# if DEBUG:
+#     STATIC_ROOT = os.path.join(BASE_DIR, "static")
+#     MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# else:
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
