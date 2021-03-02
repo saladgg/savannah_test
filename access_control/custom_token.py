@@ -6,7 +6,6 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.contrib.auth.models import Permission
 from rest_framework.exceptions import PermissionDenied
 
-
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import status
