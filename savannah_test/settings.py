@@ -40,6 +40,11 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+MIDDLEWARE_CLASSES = (
+    # Simplified static file serving.
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+)
+
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
