@@ -5,7 +5,7 @@ from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = "b95t^2q+f5&vx8oga&v_+@(b$p5kh62-7dsrqhliuevuo3c688"
 DEBUG = config("DEBUG", cast=bool)
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
@@ -52,7 +52,7 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=760),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
@@ -137,12 +137,8 @@ STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
 if DEBUG:
-    STATIC_ROOT = (
-        "/home/salad/Desktop/interviews/savanna_informatics/savannah_test/static/"
-    )
-    MEDIA_ROOT = (
-        "/home/salad/Desktop/interviews/savanna_informatics/savannah_test/media/"
-    )
+    STATIC_ROOT = "/home/salad/Desktop/.../savanna_informatics/savannah_test/static/"
+    MEDIA_ROOT = "/home/salad/Desktop/.../savanna_informatics/savannah_test/media/"
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, "static/")
     MEDIA_ROOT = os.path.join(BASE_DIR, "media")
