@@ -6,7 +6,7 @@ from datetime import timedelta
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "b95t^2q+f5&vx8oga&v_+@(b$p5kh62-7dsrqhliuevuo3c688"
-DEBUG = True
+DEBUG = False
 
 # SECRET_KEY = config('SECRET_KEY')
 # DEBUG = config('DEBUG', cast=bool)
@@ -149,13 +149,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, "staticfiles"),)
-
-# if DEBUG:
-#     STATIC_ROOT = os.path.join(BASE_DIR, "static")
-#     MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-# else:
-
+STATICFILES_DIRS = os.path.join(BASE_DIR, "staticfiles")
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
