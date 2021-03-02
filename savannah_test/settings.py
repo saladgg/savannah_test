@@ -1,6 +1,7 @@
 import os
 from datetime import timedelta
-import django_heroku
+
+# import django_heroku
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -159,4 +160,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

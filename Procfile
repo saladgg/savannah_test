@@ -1,1 +1,1 @@
-web: gunicorn savannah_test.wsgi --log-file -
+web: gunicorn savannah_test.wsgi 
