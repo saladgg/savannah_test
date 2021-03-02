@@ -1,8 +1,6 @@
 import os
 from datetime import timedelta
 
-# import django_heroku
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "b95t^2q+f5&vx8oga&v_+@(b$p5kh62-7dsrqhliuevuo3c688"
@@ -34,6 +32,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -41,11 +40,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-MIDDLEWARE_CLASSES = (
-    # Simplified static file serving.
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-)
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
@@ -149,8 +143,14 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-
-# django_heroku.settings(locals())
+if DEBUG:
+    STATIC_ROOT = (
+        "/home/salad/Desktop/interviews/savanna_informatics/savannah_test/static/"
+    )
+    MEDIA_ROOT = (
+        "/home/salad/Desktop/interviews/savanna_informatics/savannah_test/media/"
+    )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
