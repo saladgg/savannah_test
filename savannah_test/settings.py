@@ -13,6 +13,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "https://protected-wildwood-36224.herokuapp.com",
+    "protected-wildwood-36224.herokuapp.com",
 ]
 
 AUTH_USER_MODEL = "customers.Customer"
