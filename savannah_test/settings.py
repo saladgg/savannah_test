@@ -9,7 +9,11 @@ DEBUG = False
 # SECRET_KEY = config('SECRET_KEY')
 # DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "https://protected-wildwood-36224.herokuapp.com",
+]
 
 AUTH_USER_MODEL = "customers.Customer"
 
