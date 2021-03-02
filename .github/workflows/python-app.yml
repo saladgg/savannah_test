@@ -36,3 +36,12 @@ jobs:
         run: |
           source venv/bin/activate
           ./manage.py test --keepdb -v 2
+
+      - name: Deploy to Heroku
+        env:
+          HEROKU_API_TOKEN: ${{ secrets.SAV_HEROKU_TOKEN }}
+          HEROKU_APP_NAME: ${{ secrets.SAV_HEROKU_APPNAME }}
+        if: github.ref == 'refs/heads/main' && job.status == 'success'
+        run: |
+          git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
+          git push heroku HEAD:master -f
