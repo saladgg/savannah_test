@@ -1,3 +1,4 @@
+import django_heroku
 import os
 from datetime import timedelta
 
@@ -138,19 +139,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# COMMON
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 
-
-if DEBUG:
-    STATIC_ROOT = (
-        "/home/salad/Desktop/interviews/savanna_informatics/savannah_test/static/"
-    )
-    MEDIA_ROOT = (
-        "/home/salad/Desktop/interviews/savanna_informatics/savannah_test/media/"
-    )
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+django_heroku.settings(locals())
