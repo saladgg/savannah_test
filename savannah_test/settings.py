@@ -1,7 +1,5 @@
-import django_heroku
 import os
 from datetime import timedelta
-
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "b95t^2q+f5&vx8oga&v_+@(b$p5kh62-7dsrqhliuevuo3c688"
@@ -88,20 +86,17 @@ WSGI_APPLICATION = "savannah_test.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        "TEST": {
-            "NAME": os.path.join(BASE_DIR, "testdb.sqlite3"),
+    DATABASES = {
+        "default": {
             "ENGINE": "django.db.backends.sqlite3",
-        },
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            "TEST": {
+                "NAME": os.path.join(BASE_DIR, "testdb.sqlite3"),
+                "ENGINE": "django.db.backends.sqlite3",
+            },
+        }
     }
-}
-
-
-# DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+    
 
 import sys
 
@@ -155,5 +150,3 @@ else:
     STATIC_URL = "/static/"
     MEDIA_URL = "/media/"
 
-
-django_heroku.settings(locals(), test_runner=False)
