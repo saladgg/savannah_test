@@ -1,16 +1,7 @@
-import random, uuid, string, time
 from django.db import models
 from django.contrib.auth.models import Group, AbstractUser, BaseUserManager
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
-
-
-def getCode():
-    ms = int(time.time() * 1000.0)
-    rand_1 = "".join(
-        random.choices(string.ascii_uppercase + string.digits + str(ms), k=9)
-    )
-    return rand_1
 
 
 class CustomUserManager(BaseUserManager):

@@ -135,7 +135,6 @@ class TestOrderApp(APITestCase, TestCase):
     def test_delete_item(self):
         factory = APIRequestFactory()
         item = self.item_creation()
-        data = {"name": "another food", "amount": 650, "available": True}
         response = self.client.delete(
             "/api/admin/items/{}/".format(item["id"]),
             data={},
@@ -231,7 +230,7 @@ class TestOrderApp(APITestCase, TestCase):
         order = self.order_creation()
         response = self.client.delete(
             "/api/admin/orders/{}/".format(order["id"]),
-            data=order,
+            data={},
             HTTP_AUTHORIZATION="Bearer {}".format(self.token["access"]),
         )
         self.assertEqual(

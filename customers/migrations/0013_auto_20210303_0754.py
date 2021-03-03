@@ -7,13 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('customers', '0012_auto_20210303_0753'),
+        ("customers", "0012_auto_20210303_0753"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='customer',
-            name='code',
-            field=models.CharField(default=customers.models.getCode, max_length=200),
+            model_name="customer",
+            name="code",
+            field=models.CharField(default="NEWCUSTOMER", max_length=200),
         ),
     ]

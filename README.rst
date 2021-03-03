@@ -1,19 +1,25 @@
-# SAVANNAH INTERVIEW PRJ - an Order API service
+# DJANGO API SERVICE WITH UNITTEST, INTEGRATION TEST & CI/CD TO HEROKU
 
-## Main packages used
+## Order API service
+
+---
+
+### Main External Libraries
 
     - Django
     - Django Rest Framework
     - Simple JWT
+    - Gunicorn
 
 ## Installed apps
 
-    **customers app**
-    - Customer model - overrides the user model and is also the default auth model
-    - UserAccessGroup - model for user authentication. Connects user to auth groups
-    **orders app**
-    - Item model - this models the items that can be ordered by the registered customers
-    - Order model - is the model for recording,listing and fetching customer orders
+**customers app**
+
+- Customer model - overrides django user model and is also the default auth model - UserAccessGroup - model for user authentication. Connects user to auth groups.
+
+**orders app**
+
+- Item model - this models the items that can be ordered by the registered customers - Order model - is the model for recording,listing and fetching customer orders
 
 ## Authentication and Authorization
 
@@ -30,4 +36,5 @@
 - activate the venv by running source venv/bin/activate
 - install the requirequirements by running pip install -r requirements.txt
 - start the prj by running ./manage.py runserver
--
+
+## Usage

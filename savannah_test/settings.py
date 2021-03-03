@@ -1,14 +1,17 @@
 import os
 from datetime import timedelta
+import environ
 
-# from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# SECRET_KEY = "b95t^2q+f5&vx8oga&v_+@(b$p5kh62-7dsrqhliuevuo3c688"
-DEBUG = False
-SECRET_KEY = os.environ.get("SECRET_KEY")
-# SECRET_KEY = config("SECRET_KEY")
-# DEBUG = config('DEBUG', cast=bool)
+
+env = environ.Env(DEBUG=(bool, False))
+# reading .env file
+environ.Env.read_env()
+
+DEBUG = env("DEBUG")
+SECRET_KEY = env("SECRET_KEY")
+
 
 ALLOWED_HOSTS = [
     "localhost",

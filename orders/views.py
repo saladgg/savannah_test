@@ -1,7 +1,5 @@
-import uuid
+import environ
 import requests
-
-# from decouple import config
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -23,8 +21,9 @@ from access_control.user_permissions import (
 )
 
 
-# SMS_KEY = config("SMS_KEY")
-SMS_KEY = "aac155bc7bd9bb866ceff84f285667d75a01576439016699c25ab1bd850c2e41"
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env()
+SMS_KEY = env("SMS_KEY")
 
 
 def sendSms(user, receipients: list):
@@ -114,7 +113,6 @@ class ItemViewSet(viewsets.ViewSet):
 
     def destroy(self, request, pk=None):
         try:
-            print("ready to del", pk)
             queryset = Item.objects.all()
             item = get_object_or_404(queryset, pk=pk)
             item.delete()

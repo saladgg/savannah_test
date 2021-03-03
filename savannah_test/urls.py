@@ -9,10 +9,15 @@ from rest_framework_simplejwt import views as jwt_views
 from access_control.custom_token import CustomTokenView
 
 from orders import views as order_views
+from customers import views as customer_views
 
 admin.site.site_header = "Savannah Sales Admin Panel"
 
 router_admin = DefaultRouter()
+
+router_admin.register(
+    r"customers", customer_views.CustomerViewSet, basename="customers"
+)
 
 router_admin.register(r"items", order_views.ItemViewSet, basename="items")
 
