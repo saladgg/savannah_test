@@ -14,7 +14,7 @@ SECRET_KEY = env.get_value(
     "SECRET_KEY", default="b95t^2q+f5&vx8oga&v_+@(b$p5kh62-7dsrqhliuevuo3c688"
 )
 
-SMS_KEY = env.get_value("SMS_KEY")
+SMS_KEY = env.get_value("SMS_KEY", default="fake_key")
 
 ALLOWED_HOSTS = [
     "localhost",

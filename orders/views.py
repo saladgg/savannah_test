@@ -150,7 +150,8 @@ class OrderViewSet(viewsets.ViewSet):
             serializer = OrderCreateSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
-                sendSms(self.request.user, [self.request.user.phone])
+                if not settings.DEBUG:
+                    sendSms(self.request.user, [self.request.user.phone])
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
