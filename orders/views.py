@@ -1,4 +1,4 @@
-import environ
+import settings
 import requests
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
@@ -21,9 +21,7 @@ from access_control.user_permissions import (
 )
 
 
-env = environ.Env(DEBUG=(bool, False))
-environ.Env.read_env()
-SMS_KEY = env("SMS_KEY")
+SMS_KEY = settings.SMS_KEY
 
 
 def sendSms(user, receipients: list):
