@@ -10,7 +10,7 @@ from access_control.custom_token import CustomTokenView
 
 from orders import views as order_views
 
-admin.site.site_header = "Savannah Customers Admin Panel"
+admin.site.site_header = "Savannah Sales Admin Panel"
 
 router_admin = DefaultRouter()
 
