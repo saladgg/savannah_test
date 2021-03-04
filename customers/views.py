@@ -6,7 +6,7 @@ from rest_framework import status
 
 from .serializers import CustomerSerializer, CreateCustomerSerializer
 from .models import Customer
-from access_control.user_permissions import (
+from customers.user_permissions import (
     AdminAccessPermission,
     CashierAccessPermission,
     CustomerAccessPermission,

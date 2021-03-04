@@ -40,6 +40,7 @@ jobs:
         run: |
           source venv/bin/activate
           ./manage.py test --keepdb -v 2
+          coverage run manage.py test  --keepdb
           coverage report --omit=venv/*
 
       - name: Deploy to Heroku

@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt import views as jwt_views
 
-from access_control.custom_token import CustomTokenView
+from customers.custom_token import CustomTokenView
 
 from orders import views as order_views
 from customers import views as customer_views
