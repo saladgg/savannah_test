@@ -1,4 +1,4 @@
-import settings
+from django.conf import settings
 import requests
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
