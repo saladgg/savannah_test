@@ -138,7 +138,6 @@ class TestCustomerApp(APITestCase, TestCase):
     def test_delete_customer(self):
         factory = APIRequestFactory()
         customer = self.customer_creation()
-        print("cuuustomer", customer)
         response = self.client.delete(
             "/api/admin/customers/{}/".format(customer["id"]),
             data={},
