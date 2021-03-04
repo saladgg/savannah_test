@@ -146,14 +146,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-if DEBUG:
-    STATIC_URL = (
-        "/home/salad/Desktop/interviews/savanna_informatics/savannah_test/static/"
-    )
-    MEDIA_URL = (
-        "/home/salad/Desktop/interviews/savanna_informatics/savannah_test/media/"
-    )
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-    STATIC_URL = "/static/"
-    MEDIA_URL = "/media/"
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = "/static/"
+MEDIA_URL = "/media/"
