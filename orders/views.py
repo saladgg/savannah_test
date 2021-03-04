@@ -30,7 +30,9 @@ def sendSms(user, receipients: list):
 
     payload = {
         "username": "SALAD",
-        "message": "Hello {}, your order has been placed".format(user.first_name),
+        "message": "Hello {}, your order has been placed. Kindly collect in the next 24 hrs".format(
+            user.first_name
+        ),
         "to": receipients,
     }
 
