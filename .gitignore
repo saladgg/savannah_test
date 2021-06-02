@@ -5,3 +5,4 @@ static/
 rem.md
 .vscode/
 __pycache__/
+savannah_test/.env

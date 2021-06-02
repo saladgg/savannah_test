@@ -45,7 +45,7 @@ class TokenSerializer(TokenObtainPairSerializer):
             if "admin_access" in access_groups:
                 token["permissions"] = self.adminPerms(self)
                 return token
-            elif not "admin_access" in access_groups:
+            elif "admin_access" not in access_groups:
                 sys_user = Customer.objects.filter(
                     email=user.email, is_active=True
                 ).first()
