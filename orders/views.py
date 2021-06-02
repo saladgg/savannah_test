@@ -5,7 +5,6 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 
-
 from .serializers import (
     ItemSerializer,
     OrderSerializer,
@@ -46,7 +45,6 @@ def sendSms(user, receipients: list):
 
 
 class ItemViewSet(viewsets.ViewSet):
-    # for browsable api update/create view
     serializer_class = ItemSerializer
 
     def get_permissions(self):
